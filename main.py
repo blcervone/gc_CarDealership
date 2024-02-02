@@ -1,7 +1,41 @@
 # from vehicle_classes import *
 # Create two lists: bikes, and trucks. Create at least 3 instances of both subclasses and store in the appropriate list.
 # Create an empty list named vehicles_to_compare and fill with the user’s selection(s).
+# Define system functions
+    # get_menu_choice_validate() - gets user input for the main menu choice and validates it
+    # compare_choice_validate() - asks the user if theyre ready to compare vehicles and validates their response
+    # vehicle_choice_validate() - asks the user for the number vehicle they want to add to their compare list and validates the number is in the list shown
+    # append_selection() - appends the selected vehicle to the vehicles_to_compare list
+    # print_info() - prints the vehicle compare list with some formatting
 
+# Set keep_going = True
+# Print welcome message
+# Start a while loop based on keep_going condition
+# Call get_menu_choice_validate and store valid response in a variable
+# IF menu choice == 'b'
+    # print list of inventory bikes
+    # Prompt user to compare now or not
+    # call compare_choice_validate and store valid responsee in a variable
+    # IF compare_choice == 'y'
+        # Prompt user to select a vehicle from the list
+        # call vehicle_choice_validate and store valid response in variable
+        # call append_selection
+        # Prompt user to compare now or later
+            # If now, call print_info and exit program with exit message
+            # else pass
+    # else: pass
+# IF menu choice == 't'
+    # print list of inventory trucks
+    # Prompt user to compare now or not
+    # call compare_choice_validate and store valid responsee in a variable
+    # IF compare_choice == 'y'
+        # Prompt user to select a vehicle from the list
+        # call vehicle_choice_validate and store valid response in variable
+        # call append_selection
+        # Prompt user to compare now or later
+            # If now, call print_info and exit program with exit message
+            # else pass
+    # else: pass
 
 # ==================================================================================================================== #
 
@@ -49,7 +83,7 @@ def vehicle_choice_validate(list):
         vehicle_choice_validate(list)
 
 
-def append_selection(new_list, orig_list):
+def append_selection(new_list, orig_list, vehicle_choice):
     new_list.append(orig_list[vehicle_choice - 1])
     print(f"{new_list[len(new_list)-1].make} added!")
 
@@ -81,7 +115,7 @@ while keep_going:
         compare_choice1 = compare_choice_validate()
         if compare_choice1 == 'y':
             vehicle_choice = vehicle_choice_validate(bike_list)
-            append_selection(vehicles_to_compare_list, bike_list)
+            append_selection(vehicles_to_compare_list, bike_list, vehicle_choice)
             print("Would you like to compare your vehicles now? (y or n)")
             compare_now = compare_choice_validate()
             if compare_now == 'y':
@@ -98,8 +132,8 @@ while keep_going:
         print("Would you like to compare one of these vehicles today? (y or n) >")
         compare_choice2 = compare_choice_validate()
         if compare_choice2 == 'y':
-            vehicle_choice = vehicle_choice_validate(truck_list)
-            append_selection(vehicles_to_compare_list, truck_list)
+            vehicle_choice2 = vehicle_choice_validate(truck_list)
+            append_selection(vehicles_to_compare_list, truck_list, vehicle_choice2)
             print("Would you like to compare your vehicles now? (y or n)")
             compare_now = compare_choice_validate()
             if compare_now == 'y':
